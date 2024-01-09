@@ -1,0 +1,53 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 20px;
+    width: 240px;
+    height: 50vh;
+    background-color: #145d8e;
+    box-shadow: 10px 20px 30px 5px rgba(8, 64, 60, 0.5);
+}
+#operator{
+    background-color: rgba(0, 0, 255, 0.864);
+}
+div{
+    margin-bottom: 5px;
+}
+button{
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    height: 40px;
+}
+#button-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+#button-grid button {
+    width: 100%; 
+}
+.theme{
+    position: absolute;
+    right: 20px;
+    border-radius: 50%;
+}
+input{
+    height: 40px;
+    width: 68%;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(216, 224, 224);
+    text-align: right;
+    padding-right: 10px;
+}
