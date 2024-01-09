@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #content{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            padding: 20px;
+            width: 240px;
+            height: 50vh;
+            background-color: #145d8e;
+            box-shadow: 10px 20px 30px 5px rgba(8, 64, 60, 0.5);
+        }
+        #operator{
+            background-color: rgba(0, 0, 255, 0.864);
+        }
+        div{
+            margin-bottom: 5px;
+        }
+        button{
+            cursor: pointer;
+            border: none;
+            border-radius: 2px;
+            height: 40px;
+        }
+        #button-grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        #button-grid button {
+            width: 100%; 
+        }
+        .theme{
+            position: absolute;
+            right: 20px;
+            border-radius: 50%;
+        }
+        input{
+            height: 40px;
+            width: 68%;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(216, 224, 224);
+            text-align: right;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="content">
+        <section id="header">
+            <h1>Calculator</h1>
+            <div>
+                <button class="theme">Theme</button>
+                <input type="text" id="display" placeholder="0" readonly>
+            </div>
+        </section>
+        <section id="container">
+            <div id="button-grid">
+                <button class="btn" onclick="displayOnInput(`7`)">7</button>
+                <button class="btn" onclick="displayOnInput(`8`)">8</button>
+                <button class="btn" onclick="displayOnInput(`9`)">9</button>
+                <button id="operator" onclick="deleteCharacter()">DEL</button>
+                <button class="btn" onclick="displayOnInput(`4`)">4</button>
+                <button class="btn" onclick="displayOnInput(`5`)">5</button>
+                <button class="btn" onclick="displayOnInput(`6`)">6</button>
+                <button id="operator" onclick="displayOnInput(`+`)">+</button>
+                <button class="btn" onclick="displayOnInput(`1`)">1</button>
+                <button class="btn" onclick="displayOnInput(`2`)">2</button>
+                <button class="btn" onclick="displayOnInput(`3`)">3</button>
+                <button id="operator" onclick="displayOnInput(`-`)">-</button>
+                <button class="btn" onclick="displayOnInput(`.`)">.</button>
+                <button class="btn" onclick="displayOnInput(`0`)">0</button>
+                <button class="btn" onclick="displayOnInput(`/`)">/</button>
+                <button id="operator" onclick="displayOnInput(`*`)">*</button>
+                <button id="operator" onclick="clearAll()">AC</button>
+                <button id="operator" onclick="calculate()">=</button>
+            </div>
+        </section>
+    </section>
+    <script>
+        const content = document.getElementById(`content`);
+        const theme = document.querySelector(`.theme`);
+        let isDarkMode = false;
+
+        theme.addEventListener(`click`, ()=>{
+            isDarkMode = !isDarkMode;
+            content.style.backgroundColor = isDarkMode ? 'grey': '#145d8e';
+        })
+
+        const displayOnInput= (value)=>{
+            let display = document.getElementById(`display`);
+            display.value += value;
+        };
+        
+        const calculate = ()=>{
+            try {
+                display.value = eval(display.value)
+            } catch (error) {
+                display.value = `Error`;
+            }
+        }
+        const deleteCharacter = ()=>{
+            display.value = display.value.slice(0, -1);
+        }
+        const clearAll = ()=>{
+            display.value = ``;
+        }
+        
+        
+    </script>
+</body>
+</html>
